@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'app'
 require 'rack'
+require_relative 'config/router'
 
 use Rack::Reloader
 
-run App.new
+run Router.new
