@@ -3,15 +3,27 @@
 class AplicationController
   attr_reader :params
 
-  def initialize(params)
+  def initialize(params = {})
     @params = params
   end
 
   def index
-    status = 200
-    headers = { 'Content-Type' => 'plain/text' }
-    body = ['Hello, world!']
+    [
+      200,
+      { 'Content-Type' => 'text/plain' },
+      ['Hello, world!']
+    ]
+  end
 
-    [status, headers, body]
+  def not_found
+    [
+      404,
+      { 'Content-Type' => 'text/plain' },
+      ['404 not found']
+    ]
+  end
+
+  def self.not_found
+    new.not_found
   end
 end
